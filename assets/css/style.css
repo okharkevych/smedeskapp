@@ -447,15 +447,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-@media (min-width: 992px) {
-    #hero {
-        background-position-y: 57px;
-    }
-}
-
 @media (min-width: 1224px) {
     #hero {
         background-position-x: -0;
+        background-position-y: 57px;
     }
 
     #hero .btn-get-started {
