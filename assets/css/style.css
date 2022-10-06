@@ -94,6 +94,7 @@ h1, h2, h3, h4, h5, h6 {
     #header {
         top: 0;
     }
+
     #header .logo {
         font-size: 28px;
     }
@@ -199,9 +200,11 @@ h1, h2, h3, h4, h5, h6 {
     .nav-menu .drop-down .drop-down ul {
         left: -90%;
     }
+
     .nav-menu .drop-down .drop-down:hover > ul {
         left: -100%;
     }
+
     .nav-menu .drop-down .drop-down > a:after {
         content: "\ea9d";
     }
@@ -288,13 +291,16 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 0;
         height: 100vh;
     }
+
     #hero .container {
         padding-bottom: 63px;
     }
+
     #hero h1 {
         font-size: 28px;
         line-height: 36px;
     }
+
     #hero h2 {
         font-size: 18px;
         line-height: 24px;
@@ -307,6 +313,156 @@ h1, h2, h3, h4, h5, h6 {
         height: auto;
     }
 }
+
+@media (max-width: 280px) {
+    #hero {
+        background-position-x: -455px;
+    }
+
+    #hero h1 {
+        max-width: 180px;
+    }
+
+    #hero h2 {
+        max-width: 160px;
+    }
+
+    #hero .btn-get-started {
+        margin-top: 0;
+    }
+
+    #hero .container {
+        margin-top: -15px;
+    }
+}
+
+@media (min-width: 281px) and (max-width: 320px) {
+    #hero {
+        background-position-x: -335px;
+    }
+
+    #hero h2 {
+        max-width: 175px;
+    }
+
+    #hero .btn-get-started {
+        margin-top: -10px;
+    }
+
+    #hero .container {
+        margin-top: -25px;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 360px) and (max-height: 640px) {
+    #hero {
+        background-position-x: -380px;
+    }
+
+    #hero h1 {
+        max-width: 200px;
+    }
+
+    #hero h2 {
+        max-width: 175px;
+    }
+
+    #hero .btn-get-started {
+        margin-top: -10px;
+    }
+
+    #hero .container {
+        margin-top: -35px;
+        margin-bottom: -25px;
+    }
+}
+
+@media (min-width: 361px) and (max-width: 375px) {
+    #hero {
+        background-position-x: -380px;
+    }
+
+    #hero h1 {
+        max-width: 200px;
+    }
+
+    #hero .btn-get-started {
+        margin-top: -10px;
+    }
+
+    #hero .container {
+        margin-top: 5px;
+        margin-bottom: 60px;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 540px) {
+    #hero {
+        background-position-x: -430px;
+    }
+
+    #hero h1 {
+        max-width: 200px;
+    }
+
+    #hero .btn-get-started {
+        margin-top: -10px;
+    }
+
+    #hero .container {
+        margin-top: -30px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (min-width: 361px) and (max-width: 411px) and (min-height: 812px) {
+    #hero {
+        background-position-x: -545px;
+        background-position-y: 20px;
+    }
+}
+
+@media (min-width: 768px) and (min-height: 1024px) and (max-height: 1365px) {
+    #hero {
+        background-position-x: -605px;
+        background-position-y: 50px;
+    }
+
+    #hero .btn-get-started {
+        margin-top: -10px;
+    }
+
+    #hero .container {
+        margin-top: -140px;
+    }
+}
+
+@media (min-width: 1024px) and (min-height: 1366px) {
+    #hero {
+        background-position-x: -670px;
+    }
+
+    #hero .container {
+        margin-top: -100px;
+    }
+}
+
+@media (min-width: 992px) {
+    #hero {
+        background-position-y: 57px;
+    }
+}
+
+@media (min-width: 1224px) {
+    #hero {
+        background-position-x: -0;
+    }
+
+    #hero .btn-get-started {
+        margin-top: 10px;
+    }
+}
+
 
 section {
     padding: 60px 0;
