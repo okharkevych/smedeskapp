@@ -1,3 +1,5 @@
+// noinspection JSVoidFunctionReturnValueUsed
+
 $(document).ready((function ($) {
     "use strict";
 
@@ -53,4 +55,48 @@ $(document).ready((function ($) {
     } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
         $(".mobile-nav, .mobile-nav-toggle").hide();
     }
+
+    function getFormData($form) {
+        var data = {};
+
+        $.each($form.serializeArray(), function (i, field) {
+            if (field.name !== 'terms') {
+                data[field.name] = field.value;
+            } else {
+                data[field.name] = true;
+            }
+        });
+        $form.find(
+            'input[type="checkbox"]:not(:checked)'
+        ).each(function () {
+            if ($.inArray(this.name, data) === -1) {
+                data[this.name] = $(this).prop('checked')
+            }
+        });
+        return data;
+    }
+
+    $('.signup-button').click(function () {
+        var $form = $('.signup-form'),
+            data = getFormData($form),
+            host = 'http://127.0.0.1:8000/',
+            path = 'api/signup/',
+            url = host + path;
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: JSON.stringify(data),
+            success: function (res) {
+                console.log(res);
+                console.log('success');
+            },
+            error: function (res) {
+                console.log(res);
+                console.log('error');
+            }
+        });
+        return false;
+    });
+
 })(jQuery));
