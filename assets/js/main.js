@@ -87,16 +87,41 @@ $(document).ready((function ($) {
             type: 'POST',
             url: url,
             data: JSON.stringify(data),
+            beforeSend: function () {
+                $form.find('input').each(function () {
+                    $(this).removeClass('is-invalid');
+                })
+            },
             success: function (res) {
-                console.log(res);
-                console.log('success');
+                $('#header .alert-success').fadeIn(function () {
+                    $(this).fadeOut(14000);
+                });
+                $form.find('input').each(function () {
+                    var $signupField = $(this)
+
+                    if ($signupField.is(':checked')) {
+                        $(this).prop('checked', false);
+                    } else {
+                        $(this).val('');
+                    }
+                })
             },
             error: function (res) {
-                console.log(res);
-                console.log('error');
+                $.each(res.responseJSON, function (fieldID, errorMessage) {
+                    var $input = $('#' + fieldID),
+                        $feedback = $input.parent().find('.invalid-feedback');
+
+                    $feedback.text(errorMessage);
+                    $input.addClass('is-invalid');
+                });
             }
         });
         return false;
     });
+    $('.alert .close').click(function () {
+        var $alert = $(this).parent();
 
+        $alert.fadeOut();
+        $alert.dequeue();
+    })
 })(jQuery));

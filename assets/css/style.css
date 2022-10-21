@@ -96,6 +96,18 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 40px;
 }
 
+#header .alert-success {
+    margin-top: 15px;
+    position: absolute;
+    background-color: #ccf6e4;
+    border-color: #b8f2da;
+    color: #006d3f;
+    width: 100%;
+    text-align: center;
+    z-index: 99;
+    display: none;
+}
+
 @media (max-width: 992px) {
     #header {
         top: 0;
@@ -733,6 +745,10 @@ section {
     font-weight: 600;
     color: #555;
     margin-left: 20px;
+}
+
+.signup .signup-form .form-check .invalid-feedback {
+    margin-top: -20px;
 }
 
 .signup .signup-form input {
