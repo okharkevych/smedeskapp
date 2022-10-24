@@ -13,5 +13,6 @@ venv/
 # Distribution / packaging
 .Python
 
+Pipfile
+
 *.env
-*.sqlite3
