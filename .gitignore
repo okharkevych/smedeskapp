@@ -13,4 +13,6 @@ venv/
 # Distribution / packaging
 .Python
 
+Pipfile
+
 *.env
