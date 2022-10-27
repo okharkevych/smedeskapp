@@ -77,7 +77,7 @@ $(document).ready((function ($) {
     }
 
     $('.signup-button').click(function () {
-        var $form = $('.signup-form'),
+        var $form = $('.auth-form'),
             data = getFormData($form),
             host = 'http://127.0.0.1:8000/',
             path = 'api/signup/',

@@ -526,6 +526,12 @@ section {
     margin-bottom: 0;
 }
 
+.section-title .description {
+    font-size: 14px;
+    max-width: 400px;
+    margin: auto;
+}
+
 .why-us .content {
     padding: 30px;
     background: #1977cc;
@@ -700,44 +706,44 @@ section {
     vertical-align: middle;
 }
 
-.signup {
+.auth {
     width: 660px;
 }
 
-.signup .container {
+.auth .container {
     max-width: 660px;
 }
 
-.signup .container .row.mt-5 {
+.auth .container .row.mt-5 {
     margin-top: 15px !important;
 }
 
-.signup .container .row .col-lg-8 {
+.auth .container .row .col-lg-8 {
     margin: auto;
 }
 
-.signup .signup-form {
+.auth .auth-form {
     width: 100%;
     background: #fff;
 }
 
-.signup .signup-form .form-group {
+.auth .auth-form .form-group {
     padding-bottom: 8px;
 }
 
-.signup .signup-form .form-check {
+.auth .auth-form .form-check {
     padding-left: 0;
     margin-top: -20px;
     margin-bottom: -20px;
 }
 
-.signup .signup-form .form-check-input {
+.auth .auth-form .form-check-input {
     margin: 0;
     padding: 0;
     font-size: 1em;
 }
 
-.signup .signup-form .form-check-label {
+.auth .auth-form .form-check-label {
     display: inline-block;
     margin-top: 13px;
     margin-bottom: 25px;
@@ -747,29 +753,29 @@ section {
     margin-left: 20px;
 }
 
-.signup .signup-form .form-check .invalid-feedback {
+.auth .auth-form .form-check .invalid-feedback {
     margin-top: -20px;
 }
 
-.signup .signup-form input {
+.auth .auth-form input {
     border-radius: 0;
     box-shadow: none;
     font-size: 14px;
     height: 44px;
 }
 
-.signup .signup-form .signup-button {
+.auth .auth-form .signup-button {
     margin-top: 30px;
 }
 
-.signup .signup-form .signin {
+.auth .auth-form .sub-action {
     padding-left: 0;
     text-align: center;
     margin-top: -12px;
     margin-bottom: -18px;
 }
 
-.signup .signup-form .signin .link {
+.auth .auth-form .sub-action .link {
     display: inline-block;
     margin-top: 30px;
     margin-bottom: 25px;
@@ -779,7 +785,7 @@ section {
     margin-left: 20px;
 }
 
-.signup .signup-form button[type="submit"] {
+.auth .auth-form button[type="submit"] {
     background: #1977cc;
     border: 0;
     color: #fff;
@@ -789,12 +795,12 @@ section {
     margin-top: 10px;
 }
 
-.signup .signup-form button[type="submit"]:hover {
+.auth .auth-form button[type="submit"]:hover {
     background: #1c84e3;
 }
 
 @media (max-width: 414px) {
-    .signup .signup-form button[type="submit"] {
+    .auth .auth-form button[type="submit"] {
         width: 100%;
         height: 50px;
         padding: 0;
@@ -802,7 +808,7 @@ section {
 }
 
 @media (max-width: 375px) {
-    .signup .container:nth-child(1) {
+    .auth .container:nth-child(1) {
         margin-top: 60px;
     }
 }
