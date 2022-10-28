@@ -76,6 +76,31 @@ $(document).ready((function ($) {
         return data;
     }
 
+    $('.signin-button').click(function () {
+        var $form = $('.auth-form'),
+            data = getFormData($form),
+            host = 'http://127.0.0.1:8000/',
+            path = 'api/signin/',
+            url = host + path;
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: JSON.stringify(data),
+            xhrFields: {withCredentials: true},
+            success: function (res) {
+                console.log(res);
+                console.log('success');
+            },
+            error: function (res) {
+                console.log(res);
+                console.log('error');
+            }
+        });
+
+        return false;
+    });
+
     $('.signup-button').click(function () {
         var $form = $('.auth-form'),
             data = getFormData($form),
