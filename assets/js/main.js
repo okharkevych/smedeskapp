@@ -80,29 +80,35 @@ $(document).ready((function ($) {
         return data;
     }
 
-    $('.signin-button').click(function () {
-        var $form = $('.auth-form'),
-            data = getFormData($form),
-            host = 'http://127.0.0.1:8000/',
-            path = 'api/signin/',
-            url = host + path;
+    function removeFieldErrors() {
+        $('.auth-form').find('input').each(function () {
+            $(this).removeClass('is-invalid');
+        })
+    }
 
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: JSON.stringify(data),
-            xhrFields: {withCredentials: true},
-            success: function () {
-                window.location.href = appHost + '/dashboard/';
-            },
-            error: function (res) {
-                console.log(res);
-                console.log('error');
+    function showFieldErrors(res) {
+        $.each(res.responseJSON, function (fieldID, errorMessage) {
+            var $input = $('#' + fieldID),
+                $feedback = $input.parent().find('.invalid-feedback');
+
+            $feedback.text(errorMessage);
+            $input.addClass('is-invalid');
+
+            if (fieldID === 'detail') {
+                $('.auth-form').find('input').each(function () {
+                    $(this).val('');
+                });
+
+                var $alert = $('#header .alert-danger'),
+                    $alertText = $alert.find('.text');
+
+                $alertText.text(errorMessage);
+                $alert.fadeIn(function () {
+                    $(this).fadeOut(14000);
+                });
             }
-        });
-
-        return false;
-    });
+        })
+    }
 
     $('.signup-button').click(function () {
         var $form = $('.auth-form'),
@@ -115,12 +121,8 @@ $(document).ready((function ($) {
             type: 'POST',
             url: url,
             data: JSON.stringify(data),
-            beforeSend: function () {
-                $form.find('input').each(function () {
-                    $(this).removeClass('is-invalid');
-                })
-            },
-            success: function (res) {
+            beforeSend: removeFieldErrors,
+            success: function () {
                 $('#header .alert-success').fadeIn(function () {
                     $(this).fadeOut(14000);
                 });
@@ -134,18 +136,32 @@ $(document).ready((function ($) {
                     }
                 })
             },
-            error: function (res) {
-                $.each(res.responseJSON, function (fieldID, errorMessage) {
-                    var $input = $('#' + fieldID),
-                        $feedback = $input.parent().find('.invalid-feedback');
-
-                    $feedback.text(errorMessage);
-                    $input.addClass('is-invalid');
-                });
-            }
+            error: showFieldErrors
         });
         return false;
     });
+
+    $('.signin-button').click(function () {
+        var $form = $('.auth-form'),
+            data = getFormData($form),
+            host = 'http://127.0.0.1:8000/',
+            path = 'api/signin/',
+            url = host + path;
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: JSON.stringify(data),
+            xhrFields: {withCredentials: true},
+            beforeSend: removeFieldErrors,
+            success: function () {
+                window.location.href = appHost + '/dashboard/';
+            },
+            error: showFieldErrors
+        });
+        return false;
+    });
+
     $('.alert .close').click(function () {
         var $alert = $(this).parent();
 

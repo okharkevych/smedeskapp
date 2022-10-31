@@ -108,6 +108,22 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
+#header .alert-danger {
+    margin-top: 15px;
+    position: absolute;
+    color: #781d2d;
+    background-color: #fad7dd;
+    border-color: #f8c7d0;
+    width: 100%;
+    text-align: center;
+    z-index: 99;
+    display: none;
+}
+
+#header .alert-danger .text {
+    display: inline-block;
+}
+
 @media (max-width: 992px) {
     #header {
         top: 0;
