@@ -4,7 +4,11 @@ $(document).ready((function ($) {
     "use strict";
 
     var navMenu = '.nav-menu',
-        body = 'body';
+        body = 'body',
+        port = (window.location.port) ? ':' + window.location.port : '',
+        appHost = window.location.protocol + '//' +
+            window.location.hostname +
+            port;
 
     if ($(navMenu).length) {
         var $mobileNav = $(navMenu).clone().prop({
@@ -88,9 +92,8 @@ $(document).ready((function ($) {
             url: url,
             data: JSON.stringify(data),
             xhrFields: {withCredentials: true},
-            success: function (res) {
-                console.log(res);
-                console.log('success');
+            success: function () {
+                window.location.href = appHost + '/dashboard/';
             },
             error: function (res) {
                 console.log(res);
