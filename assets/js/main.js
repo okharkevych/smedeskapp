@@ -4,7 +4,11 @@ $(document).ready((function ($) {
     "use strict";
 
     var navMenu = '.nav-menu',
-        body = 'body';
+        body = 'body',
+        port = (window.location.port) ? ':' + window.location.port : '',
+        appHost = window.location.protocol + '//' +
+            window.location.hostname +
+            port;
 
     if ($(navMenu).length) {
         var $mobileNav = $(navMenu).clone().prop({
@@ -76,6 +80,36 @@ $(document).ready((function ($) {
         return data;
     }
 
+    function removeFieldErrors() {
+        $('.auth-form').find('input').each(function () {
+            $(this).removeClass('is-invalid');
+        })
+    }
+
+    function showFieldErrors(res) {
+        $.each(res.responseJSON, function (fieldID, errorMessage) {
+            var $input = $('#' + fieldID),
+                $feedback = $input.parent().find('.invalid-feedback');
+
+            $feedback.text(errorMessage);
+            $input.addClass('is-invalid');
+
+            if (fieldID === 'detail') {
+                $('.auth-form').find('input').each(function () {
+                    $(this).val('');
+                });
+
+                var $alert = $('#header .alert-danger'),
+                    $alertText = $alert.find('.text');
+
+                $alertText.text(errorMessage);
+                $alert.fadeIn(function () {
+                    $(this).fadeOut(14000);
+                });
+            }
+        })
+    }
+
     $('.signup-button').click(function () {
         var $form = $('.auth-form'),
             data = getFormData($form),
@@ -87,12 +121,8 @@ $(document).ready((function ($) {
             type: 'POST',
             url: url,
             data: JSON.stringify(data),
-            beforeSend: function () {
-                $form.find('input').each(function () {
-                    $(this).removeClass('is-invalid');
-                })
-            },
-            success: function (res) {
+            beforeSend: removeFieldErrors,
+            success: function () {
                 $('#header .alert-success').fadeIn(function () {
                     $(this).fadeOut(14000);
                 });
@@ -106,18 +136,32 @@ $(document).ready((function ($) {
                     }
                 })
             },
-            error: function (res) {
-                $.each(res.responseJSON, function (fieldID, errorMessage) {
-                    var $input = $('#' + fieldID),
-                        $feedback = $input.parent().find('.invalid-feedback');
-
-                    $feedback.text(errorMessage);
-                    $input.addClass('is-invalid');
-                });
-            }
+            error: showFieldErrors
         });
         return false;
     });
+
+    $('.signin-button').click(function () {
+        var $form = $('.auth-form'),
+            data = getFormData($form),
+            host = 'http://127.0.0.1:8000/',
+            path = 'api/signin/',
+            url = host + path;
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: JSON.stringify(data),
+            xhrFields: {withCredentials: true},
+            beforeSend: removeFieldErrors,
+            success: function () {
+                window.location.href = appHost + '/dashboard/';
+            },
+            error: showFieldErrors
+        });
+        return false;
+    });
+
     $('.alert .close').click(function () {
         var $alert = $(this).parent();
 
