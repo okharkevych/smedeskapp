@@ -1,0 +1,95 @@
+a {
+    color: #1977cc;
+}
+
+a:hover {
+    color: #3291e6;
+}
+
+.t-header .t-header-brand-wrapper {
+    padding-left: 0;
+}
+
+.t-header .t-header-brand-wrapper .logo {
+    margin: auto;
+    width: auto;
+}
+
+.t-header .t-header-brand-wrapper .logo a {
+    color: #2c4964;
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: "Poppins", sans-serif;
+
+    margin-right: auto;
+    -webkit-font-smoothing: initial;
+
+    margin-left: -25px;
+}
+
+.t-header .t-header-brand-wrapper .logo .mobile {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .t-header .t-header-brand-wrapper .logo .desktop {
+        display: none;
+    }
+
+    .t-header .t-header-brand-wrapper .logo .mobile {
+        display: block;
+    }
+}
+
+.display-avatar.animated-avatar:before {
+    background-color: #1977cc;
+    background-image: linear-gradient(19deg, #2c4964 0%, #1977cc 100%);
+}
+
+.navbar-dropdown .dropdown-header {
+    text-align: center;
+}
+
+.sidebar .navigation-menu li.active a .link-title {
+    color: #1977cc;
+}
+
+.sidebar .navigation-menu li.active a .link-icon {
+    color: #1977cc;
+}
+
+.sidebar .navigation-menu > li:not(.nav-category-divider):hover a:not([aria-expanded="true"]) .link-icon {
+    color: #3291e6;
+}
+
+.sidebar-upgrade-banner {
+    background: url(../vendor/admin-template/img/pro_features_bg.png) no-repeat;
+    background-color: #fbfcfd;
+    background-size: 50%;
+    background-position: center 20%;
+}
+
+.sidebar-upgrade-banner .upgrade-btn {
+    background: #1977cc;
+    border-radius: 50px;
+}
+
+.sidebar-upgrade-banner .upgrade-btn:hover {
+    background: #3291e6;
+}
+
+.text-primary {
+    color: #1977cc !important;
+}
+
+.badge-success {
+    background-color: #55c5a9;
+}
+
+.badge-danger {
+    background-color: #d44d47;
+}
