@@ -2,6 +2,39 @@
 $(document).ready((function ($) {
     'use strict';
 
+    var host = 'http://127.0.0.1:8000/',
+        port = (window.location.port) ? ':' + window.location.port : '',
+        appHost = window.location.protocol + '//' +
+            window.location.hostname +
+            port;
+
+    function signOut() {
+        window.location.href = appHost;
+    }
+
+    $.ajax({
+        type: 'GET',
+        url: host + 'api/current_user/',
+        xhrFields: {withCredentials: true},
+        success: function (res) {
+            $('#preloader').fadeOut();
+        },
+        error: signOut
+    });
+
+    $('.signout-button').click(function () {
+        var path = 'api/signout/',
+            url = host + path;
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            xhrFields: {withCredentials: true},
+            success: signOut,
+            error: signOut
+        });
+    });
+
     var mobileToggler = $('.t-header-mobile-toggler');
 
     mobileToggler.on('click', function () {
