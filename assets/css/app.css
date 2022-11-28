@@ -22,6 +22,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway", sans-serif;
 }
 
+#app {
+    height: 100%;
+}
+
 #topbar {
     background: #fff;
     height: 40px;
