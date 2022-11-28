@@ -12,7 +12,7 @@ venv/
 
 # Distribution / packaging
 .Python
-
-Pipfile
+node_modules/
 
 *.env
+src/.env.dev

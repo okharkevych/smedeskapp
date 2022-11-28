@@ -1,0 +1,6 @@
+#header .container .nav-menu ul li.authenticated,
+#header .container .nav-menu ul li.auth-required,
+.mobile-nav.d-lg-none ul .authenticated,
+.mobile-nav.d-lg-none ul .auth-required {
+    display: none;
+}
