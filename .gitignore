@@ -16,3 +16,7 @@ node_modules/
 
 *.env
 src/.env.dev
+
+# Ignoring until its contents change
+# to avoid commits upon file recreation
+src/app/config.js
